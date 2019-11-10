@@ -73,7 +73,7 @@ runContainer() {
 
 	    if [[ -z "${VALOHAI_TOKEN:-}" ]]; then
 			read -s -p "Enter (or paste) the Valohai token you generated from your account on valohai.com: " VALOHAI_TOKEN
-		else 
+		else
 			echo "The expected environment variable VALOHAI_TOKEN has been set."
 	    fi
 
@@ -82,9 +82,9 @@ runContainer() {
 		## When run in the console mode (command-prompt available)
 		TOGGLE_ENTRYPOINT="--entrypoint /bin/bash"
 		VOLUMES_SHARED="--volume "$(pwd)":${WORKDIR}/work --volume "$(pwd)"/shared:${WORKDIR}/shared"
-	fi  
+	fi
 
-	echo ""; 
+	echo "";
 	echo "Running container ${FULL_DOCKER_TAG_NAME}:${IMAGE_VERSION}"; echo ""
 
 	mkdir -p shared/notebooks
@@ -191,7 +191,7 @@ showUsageText() {
                                  --pushImageToHub
                                  --help
 
-       --dockerUserName      your Docker user name as on Docker Hub 
+       --dockerUserName      your Docker user name as on Docker Hub
                              (mandatory with build, run and push commands)
        --valohaiUserName     your Valohai user name as created on Valohai.com
                              (mandatory with notebook that uses the vh client)
@@ -203,9 +203,9 @@ showUsageText() {
                              enables the traditional JDK)
        --javaopts            sets the JAVA_OPTS environment variable
                              inside the container as it starts
-       --notebookMode        runs the Jupyter/Jupyhai notebook server 
+       --notebookMode        runs the Jupyter/Jupyhai notebook server
                              (default: returns to command-prompt on startup)
-       --cleanup             (command action) remove exited containers and 
+       --cleanup             (command action) remove exited containers and
                              dangling images from the local repository
        --buildImage          (command action) build the docker image
        --runContainer        (command action) run the docker image as a docker container
@@ -265,7 +265,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
   --cleanup)             cleanup;
                          exit 0;;
   --dockerUserName)      DOCKER_USER_NAME="${2:-}";
-                         shift;;                         
+                         shift;;
   --language)            language_id=${3:-java};
                          shift;;
   --detach)              INTERACTIVE_MODE="--detach";
