@@ -80,11 +80,6 @@ $ ./docker-runner.sh --help
        --language            language id as in java, clojure, scala, etc...
        --detach              run container and detach from it,
                              return control to console
-       --jdk                 name of the JDK to use (currently supports 
-                             GRAALVM only, default is blank which 
-                             enables the traditional JDK)
-       --javaopts            sets the JAVA_OPTS environment variable
-                             inside the container as it starts
        --cleanup             (command action) remove exited containers and
                              dangling images from the local repository
        --buildImage          (command action) build the docker image
@@ -101,14 +96,6 @@ $ ./docker-runner.sh --runContainer
 or
 
 $ ./docker-runner.sh --runContainer --dockerUserName [your docker user name]
-
-or run in GraalVM mode
-
-$ ./docker-runner.sh --runContainer --jdk "GRAALVM"
-
-or run by switching off JVMCI flag (default: on) when running in GRAALVM mode
-
-$ ./docker-runner.sh --javaopts "-XX:-UseJVMCINativeLibrary"
 ```
 
 **Build the docker container:**
