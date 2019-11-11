@@ -6,8 +6,6 @@ Run a docker container with NLP libraries/frameworks written in Java/JVM languag
 
 Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing#natural-language-processing-nlp) section.
 
-Startup in traditional JDK or GraalVM mode.
-
 ## Goals
 
 - Run docker container containing NLP libraries/frameworks written in Java/JVM languages
