@@ -48,7 +48,7 @@ Startup in traditional JDK or GraalVM mode.
 
 ## Scripts provided
 
-**Go to [the previous folder](../nlp-java-jvm) to find the below scripts.**
+**Scroll up pass the top of the README page to find below mentioned scripts.**
 
 - [docker-runner.sh](./docker-runner.sh): can perform a number of the below actions depending on the flags passed to it:
     - runs the container and brings you to the command prompt inside the container:
