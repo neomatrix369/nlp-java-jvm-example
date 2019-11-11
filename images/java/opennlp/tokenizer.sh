@@ -86,7 +86,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
                          TMPFILE=$(mktemp)
                          echo "${PLAIN_TEXT}" > ${TMPFILE}
                          cat ${TMPFILE} | ${APACHE_OPENNLP_CMD}
-                         rm -f ${TMPFILE} 
+                         rm -f ${TMPFILE}
                          exit 0;;
   --file)                FILENAME="${2:-}";
                          checkIfApacheOpenNLPIsPresent

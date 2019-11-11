@@ -57,7 +57,7 @@ setModelFilename() {
 }
 
 setCommand() {
-  APACHE_OPENNLP_CMD="${OPENNLP_BINARY} TokenNameFinder ${SHARED_FOLDER}/${MODEL_FILENAME}" 
+  APACHE_OPENNLP_CMD="${OPENNLP_BINARY} TokenNameFinder ${SHARED_FOLDER}/${MODEL_FILENAME}"
 }
 
 checkMethod() {

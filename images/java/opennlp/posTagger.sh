@@ -95,7 +95,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
                          checkIfApacheOpenNLPIsPresent
                          downloadModel;
                          cat ${FILENAME}    | ${APACHE_OPENNLP_CMD};
-                         showHelpForTagLegend                         
+                         showHelpForTagLegend
                          exit 0;;
   *) echo "Unknown parameter passed: $1";
      showUsageText;
