@@ -2,7 +2,7 @@
 
 NLP Java: [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) | NLP Clojure: [![NLP Clojure](https://img.shields.io/docker/pulls/neomatrix369/nlp-clojure.svg)](https://hub.docker.com/r/neomatrix369/nlp-clojure) | NLP Kotlin: [![NLP Kotlin](https://img.shields.io/docker/pulls/neomatrix369/nlp-kotlin.svg)](https://hub.docker.com/r/neomatrix369/nlp-kotlin) | NLP Scala: [![NLP Scala](https://img.shields.io/docker/pulls/neomatrix369/nlp-scala.svg)](https://hub.docker.com/r/neomatrix369/nlp-scala)
 
-This area in the repo is a result of the blog post [Exploring NLP concepts using Apache OpenNLP](https://medium.com/@neomatrix369/exploring-nlp-concepts-using-apache-opennlp-4d59c3cac8) | [Original post](https://blog.valohai.com/exploring-nlp-concepts-using-apache-opennlp-1?from=3oxenia9mtr6). Please refer to the post before considering using this repo to understand better on how to use the different aspects of it.
+Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 9 (from OpenJDK or another source) or GraalVM.
 
 ---
 Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
@@ -80,6 +80,12 @@ $ ./docker-runner.sh --help
        --language            language id as in java, clojure, scala, etc...
        --detach              run container and detach from it,
                              return control to console
+       --jdk                 name of the JDK to use (currently supports 
+                             GRAALVM only, default is blank which 
+                             enables the traditional JDK)
+                             GRAALVM is only for CLI operations
+       --javaopts            sets the JAVA_OPTS environment variable
+                             inside the container as it starts
        --cleanup             (command action) remove exited containers and
                              dangling images from the local repository
        --buildImage          (command action) build the docker image
@@ -96,6 +102,14 @@ $ ./docker-runner.sh --runContainer
 or
 
 $ ./docker-runner.sh --runContainer --dockerUserName [your docker user name]
+
+or run in GraalVM mode (for CLI operations)
+
+$ ./docker-runner.sh --runContainer --jdk "GRAALVM"
+
+or run by switching off JVMCI flag (default: on) when running in GRAALVM mode
+
+$ ./docker-runner.sh --javaopts "-XX:-UseJVMCINativeLibrary"
 ```
 
 **Build the docker container:**
