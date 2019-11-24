@@ -50,6 +50,9 @@ openNotebookInBrowser() {
 	OPEN_CMD="$(getOpenCommand)"
 	"${OPEN_CMD}" "${URL}"
 
+	docker exec ${CONTAINER_ID} \
+	       /bin/bash -c         \
+	       "echo JAVA_HOME=${JAVA_HOME}; echo PATH=${PATH}; echo JDK_TO_USE=${JDK_TO_USE}; java -version"
 	echo "";
 	echo "****************************************************"
 	echo "Attaching back to container, with ID ${CONTAINER_ID}"
