@@ -4,6 +4,10 @@ FROM valohai/jupyhai as base-image
 
 COPY --from=adoptopenjdk/openjdk9 /opt/java /opt/java
 
+### Install GraalVM for Java 11 from AdoptOpenJDK images
+
+COPY --from=oracle/graalvm-ce:19.3.0-java11 /opt/graalvm-ce-java11-19.3.0 /opt/java/graalvm
+
 ### Install curl needed for rest of the tasks
 
 USER root
@@ -16,11 +20,15 @@ WORKDIR ${WORKDIR}
 
 ARG JAVA_9_HOME
 ENV JAVA_HOME=${JAVA_9_HOME}
+ARG GRAALVM_HOME
+ENV GRAALVM_HOME=${GRAALVM_HOME}
 ENV PATH=${JAVA_HOME}/bin:${PATH}
 
-### Test Java
+### Test Java (Traditional and GraalVM)
 
 RUN ${JAVA_9_HOME}/bin/java -version
+
+RUN ${GRAALVM_HOME}/bin/java -version
 
 ### Install packages
 
@@ -32,8 +40,8 @@ RUN vim --version
 
 ### Install the Jupyter Java Kernel
 
-COPY install-java-kernel.sh /install-java-kernel.sh
-RUN cd / && ./install-java-kernel.sh
+COPY install-java-kernel.sh install-java-kernel.sh
+RUN ./install-java-kernel.sh
 
 ### Setup user
 COPY .bashrc .bashrc_custom

@@ -19,7 +19,8 @@ function switchToGraal {
 if [[ "${JDK_TO_USE:-}" = "GRAALVM" ]]; then
     JAVA_HOME=${GRAALVM_HOME}
 else
-	JAVA_HOME=${JAVA_9_HOME}
+    JAVA_HOME=${JAVA_9_HOME}
 fi
+
 
 export PATH="${JAVA_HOME}/bin:${OLD_PATH}"

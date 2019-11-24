@@ -1,6 +1,6 @@
 # Apache OpenNLP [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) 
 
-Run a docker container with Apache OpenNLP written in Java, running under the traditional Java 8 (from OpenJDK or another source) or GraalVM.
+Run a docker container with Apache OpenNLP written in Java, running under the traditional Java 9 (from OpenJDK or another source) or GraalVM (19.3.0 or higher).
 
 Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](../../../../../natural-language-processing/README.md#natural-language-processing-nlp) section.
 
