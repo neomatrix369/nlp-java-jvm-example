@@ -20,7 +20,7 @@ if [[ "${JDK_TO_USE:-}" = "GRAALVM" ]]; then
     switchToGraal
     JAVA_HOME=${GRAALVM_HOME}
 else
-    switchTo9
+    switchTo11
     JAVA_HOME=${JAVA_11_HOME}
 fi
 

@@ -183,6 +183,8 @@ showUsageText() {
                                  --valohaiUserName [Valohai user name]
                                  --language [language id]
                                  --detach
+                                 --jdk [GRAALVM]
+                                 --javaopts [java opt arguments]
                                  --notebookMode
                                  --cleanup
                                  --buildImage
@@ -269,6 +271,10 @@ while [[ "$#" -gt 0 ]]; do case $1 in
                          shift;;
   --detach)              INTERACTIVE_MODE="--detach";
                          TIME_IT="";;
+  --jdk)                 JDK_TO_USE="${2:-}";
+                         shift;;
+  --javaopts)            JAVA_OPTS="${2:-}";
+                         shift;;
   --notebookMode)        NOTEBOOK_MODE=true;;
   --buildImage)          buildImage;
                          exit 0;;
