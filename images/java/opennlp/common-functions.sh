@@ -2,10 +2,10 @@ language=en
 MODEL_VERSION=1.5
 
 APACHE_OPENNLP_VERSION=1.9.1
-if [[ -f /.dockerenv ]]; then
-	SHARED_FOLDER="../shared/"
+if [[ -f /.dockerenv  ]]; then
+    SHARED_FOLDER="../shared/"
 else
-	SHARED_FOLDER="../../../shared/"
+    SHARED_FOLDER="../../../shared/"
 fi
 
 URL_PREFIX="http://opennlp.sourceforge.net/models-"
@@ -28,8 +28,8 @@ downloadModel() {
 		echo "Downloading model ${MODEL_FILENAME} (${language}) in '${SHARED_FOLDER}'"
 		curl -O -J -L \
 		     "${URL_PREFIX}${MODEL_VERSION}/${MODEL_FILENAME}"
-        mkdir -p ${SHARED_FOLDER}
-        mv ${MODEL_FILENAME} ${SHARED_FOLDER}
+    mkdir -p ${SHARED_FOLDER}
+    mv ${MODEL_FILENAME} ${SHARED_FOLDER}
 	fi
 }
 
