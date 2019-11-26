@@ -1,8 +1,8 @@
 FROM valohai/jupyhai as base-image
 
-### Install JDK 9 from AdoptOpenJDK images
+### Install JDK 11 from AdoptOpenJDK images
 
-COPY --from=adoptopenjdk/openjdk9 /opt/java /opt/java
+COPY --from=adoptopenjdk/openjdk11 /opt/java /opt/java
 
 ### Install GraalVM for Java 11 from AdoptOpenJDK images
 
@@ -41,7 +41,8 @@ RUN vim --version
 ### Install the Jupyter Java Kernel
 
 COPY install-java-kernel.sh install-java-kernel.sh
-RUN ./install-java-kernel.sh
+RUN ./install-java-kernel.sh --buildJar
+RUN ./install-java-kernel.sh --installJar
 
 ### Setup user
 COPY .bashrc .bashrc_custom
