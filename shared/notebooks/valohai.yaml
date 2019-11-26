@@ -6,6 +6,7 @@
     inputs:
       - name: java-program
         description: (DetectLanguage) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectLanguage.java
       - name: model
         description: Model file to perform the necessary action
         default: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/opennlp/models/langdetect/1.8.3/langdetect-183.bin

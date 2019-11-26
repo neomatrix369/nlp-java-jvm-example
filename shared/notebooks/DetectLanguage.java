@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class DetectLanguage {
     public static void main(String [] args) throws Exception {
         System.out.println("[Started...]");
-        try (InputStream modelIn = new FileInputStream("../shared/langdetect-183.bin")) {
+        try (InputStream modelIn = new FileInputStream("langdetect-183.bin")) {
             LanguageDetectorModel langModel = new LanguageDetectorModel(modelIn);
             String inputText = "This is a sample text.";
             System.out.println("Sentence: " + inputText);
