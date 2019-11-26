@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Tokenize {
     public static void main(String [] args) throws Exception {
         System.out.println("[Started...]");
-        try(InputStream modelIn = new FileInputStream("../shared/en-token.bin")) {
+        try(InputStream modelIn = new FileInputStream("en-token.bin")) {
             TokenizerModel model = new TokenizerModel(modelIn);
             TokenizerME tokenizer = new TokenizerME(model);
             String sentence = "An input sample sentence.";

@@ -33,7 +33,7 @@
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
-    name: tokenize
+    name: tokenize-sentence
     image: neomatrix369/nlp-java:0.2
     command:
       - ./run-commands.sh Tokenize
@@ -44,6 +44,23 @@
       - name: model
         description: (Tokenize) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-token.bin
+      - name: apache-opennlp-jar
+        description: The Apache OpenNLP library that helps with loading the model and running the NLP task
+        default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    environment: aws-eu-west-1-g2-2xlarge
+
+- step:
+    name: name-finder-person
+    image: neomatrix369/nlp-java:0.2
+    command:
+      - ./run-commands.sh NameFinderPerson
+    inputs:
+      - name: java-program
+        description: (Tokenize) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/NameFinderPerson.java
+      - name: model
+        description: (Tokenize) Model file to perform the necessary action
+        default: http://opennlp.sourceforge.net/models-1.5/en-ner-person.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
