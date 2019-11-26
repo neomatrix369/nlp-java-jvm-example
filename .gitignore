@@ -24,7 +24,8 @@ __pycache__
 /.project
 /.pydevproject
 .ipynb_checkpoints
-*shared/
+shared/
 *.cache
 .local
 .bash_history
+!shared/notebooks
