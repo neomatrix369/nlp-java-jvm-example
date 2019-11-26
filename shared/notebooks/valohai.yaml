@@ -2,14 +2,31 @@
     name: detect-language
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh
+      - ./run-commands.sh DetectLanguage
     inputs:
       - name: java-program
         description: (DetectLanguage) snippet of java source code that loads the model and runs an example
         default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectLanguage.java
       - name: model
-        description: Model file to perform the necessary action
+        description: (DetectLanguage) Model file to perform the necessary action
         default: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/opennlp/models/langdetect/1.8.3/langdetect-183.bin
+      - name: apache-opennlp-jar
+        description: The Apache OpenNLP library that helps with loading the model and running the NLP task
+        default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    environment: aws-eu-west-1-g2-2xlarge
+
+- step:
+    name: detect-sentence
+    image: neomatrix369/nlp-java:0.2
+    command:
+      - ./run-commands.sh DetectSentence
+    inputs:
+      - name: java-program
+        description: (DetectSentence) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectSentence.java
+      - name: model
+        description: (DetectSentence) Model file to perform the necessary action
+        default: http://opennlp.sourceforge.net/models-1.5/en-sent.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
