@@ -2,18 +2,18 @@
 
 NLP Java: [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) | NLP Clojure: [![NLP Clojure](https://img.shields.io/docker/pulls/neomatrix369/nlp-clojure.svg)](https://hub.docker.com/r/neomatrix369/nlp-clojure) | NLP Kotlin: [![NLP Kotlin](https://img.shields.io/docker/pulls/neomatrix369/nlp-kotlin.svg)](https://hub.docker.com/r/neomatrix369/nlp-kotlin) | NLP Scala: [![NLP Scala](https://img.shields.io/docker/pulls/neomatrix369/nlp-scala.svg)](https://hub.docker.com/r/neomatrix369/nlp-scala)
 
-Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 9 (from OpenJDK or another source) or GraalVM.
+Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
 
 Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](../../natural-language-processing/README.md#natural-language-processing-nlp) section.
 
-Startup in traditional JDK or GraalVM mode (CLI mode operations only).
+Startup in traditional JDK or GraalVM mode.
 
 ## Goals
 
 - Run docker container containing NLP libraries/frameworks written in Java/JVM languages
 - Ability to create custom docker images (scripts & docs provided)
 - Ability to debug the docker container
-- Run using the traditional JDK 9 (OpenJDK or vendor specific versions)
+- Run using the traditional JDK 11 (OpenJDK or vendor specific versions)
 - Run using the polyglot JVM i.e. GraalVM JDK (Community version from Oracle Labs), when running performing operations from the CLI 
 - Play with and learn from with some examples for each of the libraries provided
 
@@ -82,7 +82,6 @@ $ ./docker-runner.sh --help
        --jdk                 name of the JDK to use (currently supports 
                              GRAALVM only, default is blank which 
                              enables the traditional JDK)
-                             GRAALVM is only for CLI operations
        --javaopts            sets the JAVA_OPTS environment variable
                              inside the container as it starts
        --cleanup             (command action) remove exited containers and
@@ -102,7 +101,7 @@ or
 
 $ ./docker-runner.sh --runContainer --dockerUserName [your docker user name]
 
-or run in GraalVM mode (for CLI operations)
+or run in GraalVM mode
 
 $ ./docker-runner.sh --runContainer --jdk "GRAALVM"
 
