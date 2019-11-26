@@ -3,7 +3,6 @@ import java.io.FileInputStream;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.util.Span;
-import opennlp.tools.util.Span;
 import java.util.Arrays;
 
 public class NameFinderPerson {
