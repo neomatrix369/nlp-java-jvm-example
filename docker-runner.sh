@@ -71,9 +71,10 @@ runContainer() {
 		TOGGLE_ENTRYPOINT=""; ### Disable the ENTRYPOINT & CMD directives
 		VOLUMES_SHARED="--volume "$(pwd)/shared/notebooks":${WORKDIR}/work --volume "$(pwd)"/shared:${WORKDIR}/shared";
 
-		if [[ -z "${VALOHAI_PASSWORD:-}" ]]; then
-			read -s -p "Enter Valohai password: " VALOHAI_PASSWORD
-		fi
+	    if [[ -z "${VALOHAI_TOKEN:-}" ]]; then
+			read -s -p "Enter the Valohai token you generated from your account on valohai.com: " VALOHAI_TOKEN
+	    fi
+		
 		INTERACTIVE_MODE="--detach ${INTERACTIVE_MODE}"
 	else
 		## When run in the console mode (command-prompt available)
@@ -86,16 +87,16 @@ runContainer() {
 
 	mkdir -p shared/notebooks
 
-	${TIME_IT} docker run                                    \
-	            --rm                                         \
-                ${INTERACTIVE_MODE}                          \
-                ${TOGGLE_ENTRYPOINT}                         \
-                -p ${HOST_PORT}:${CONTAINER_PORT}            \
-                --workdir ${WORKDIR}                         \
-                --env JDK_TO_USE=${JDK_TO_USE:-}             \
-                --env JAVA_OPTS=${JAVA_OPTS:-}               \
-                --env VALOHAI_PASSWORD=${VALOHAI_PASSWORD:-} \
-                ${VOLUMES_SHARED}                            \
+	${TIME_IT} docker run                                      \
+	            --rm                                           \
+                ${INTERACTIVE_MODE}                            \
+                ${TOGGLE_ENTRYPOINT}                           \
+                -p ${HOST_PORT}:${CONTAINER_PORT}              \
+                --workdir ${WORKDIR}                           \
+                --env JDK_TO_USE=${JDK_TO_USE:-}               \
+                --env JAVA_OPTS=${JAVA_OPTS:-}                 \
+                --env VALOHAI_TOKEN=${VALOHAI_TOKEN:-}         \
+                ${VOLUMES_SHARED}                              \
                 "${FULL_DOCKER_TAG_NAME}:${IMAGE_VERSION}"
 
     if [[ "${NOTEBOOK_MODE}" = "true" ]]; then
@@ -174,7 +175,8 @@ cleanup() {
 showUsageText() {
     cat << HEREDOC
 
-       Usage: $0 --dockerUserName [docker user name]
+       Usage: $0 --dockerUserName [Docker user name]
+                                 --valohaiUserName [Valohai user name]
                                  --language [language id]
                                  --detach
                                  --jdk [GRAALVM]
@@ -186,8 +188,10 @@ showUsageText() {
                                  --pushImageToHub
                                  --help
 
-       --dockerUserName      docker user name as on Docker Hub 
+       --dockerUserName      your Docker user name as on Docker Hub 
                              (mandatory with build, run and push commands)
+       --valohaiUserName     your Valohai user name as created on Valohai.com
+                             (mandatory with notebook that uses the vh client)
        --language            language id as in java, clojure, scala, etc...
        --detach              run container and detach from it,
                              return control to console
@@ -258,7 +262,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
   --cleanup)             cleanup;
                          exit 0;;
   --dockerUserName)      DOCKER_USER_NAME="${2:-}";
-                         shift;;
+                         shift;;                         
   --language)            language_id=${3:-java};
                          shift;;
   --detach)              INTERACTIVE_MODE="--detach";
