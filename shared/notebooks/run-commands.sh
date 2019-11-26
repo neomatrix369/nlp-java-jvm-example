@@ -11,6 +11,8 @@ if [[ ! -z ${VH_REPOSITORY_DIR:-} ]]; then
       tar xvzf apache-opennlp-1.9.1-bin.tar.gz
       echo "~~~ Copying the model from ${VH_INPUTS_DIR} to current location"
       cp ${VH_INPUTS_DIR}/model/*.bin .
+      mkdir -p ../shared
+      cp ${VH_INPUTS_DIR}/model/*.bin ../shared
       echo "~~~ Copying the Java source file from ${VH_INPUTS_DIR} to current location"
       cp ${VH_INPUTS_DIR}/java-program/*.java .      
 fi
