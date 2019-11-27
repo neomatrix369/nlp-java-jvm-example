@@ -2,7 +2,6 @@ import java.io.InputStream;
 import java.io.FileInputStream;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.util.Span;
 import java.util.Arrays;
 
