@@ -1,15 +1,16 @@
 # Apache OpenNLP [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) 
 
-Run a docker container with Apache OpenNLP written in Java, running under the traditional Java 8 (from OpenJDK or another source) or GraalVM.
+Run a docker container with Apache OpenNLP written in Java, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
 
 Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing#natural-language-processing-nlp) section.
 
-Startup in traditional JDK or GraalVM mode.
+Startup in traditional JDK or GraalVM mode, by default we are running in GraalVM mode.
 
 ## Goals
 
 - Run the Docker container containing the Apache OpenNLP tool by using `./docker-runner --runContainer`
-- Run in GraalVM mode inside the docker container by using `switchToGraal` at the prompt (polyglot JVM i.e. GraalVM JDK Community version from Oracle Labs) (optional)
+- Run in GraalVM mode inside the docker container by using `switchToGraal` at the prompt (polyglot JVM i.e. GraalVM JDK Community version from Oracle Labs) (default option)
+  - To run tradition Java 11, use `switchTo11` at the prompt (optional)
 - Run a number of NLP actions to explore the Apache OpenNLP tool shown below in the [Exploring NLP concepts](#exploring-nlp-concepts) section
 
 ## Exploring NLP concepts
