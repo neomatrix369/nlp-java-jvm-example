@@ -19,7 +19,7 @@ public class ParserChunking {
         Parse topParses[] = ParserTool.parseLine(sentence, parser, 1);
         
         System.out.println("Sentence: " + sentence + "\n");
-        Arrays.stream(topParses).forEach(System.out::println);
+        Arrays.stream(topParses).forEach(eachParse -> eachParse.show());
       }
       System.out.println("[...Finished]");
     }
