@@ -12,6 +12,10 @@ Startup in traditional JDK or GraalVM mode, by default we are running in GraalVM
 - Run in GraalVM mode inside the docker container by using `switchToGraal` at the prompt (polyglot JVM i.e. GraalVM JDK Community version from Oracle Labs) (default option)
   - To run tradition Java 11, use `switchTo11` at the prompt (optional)
 - Run a number of NLP actions to explore the Apache OpenNLP tool shown below in the [Exploring NLP concepts](#exploring-nlp-concepts) section
+- Run the Docker container in the notebook mode, containing the Apache OpenNLP tool by using `./docker-runner --notebookMode --runContainer`
+- Perform NLP actions similar to the ones in the [Exploring NLP concepts](#exploring-nlp-concepts) section
+  - Exploring the Apache OpenNLP Java APIs via the notebook directly
+  - Exploring the Apache OpenNLP Java APIs via the notebook with the help of remote cloud services
 
 ## Exploring NLP concepts
 
@@ -71,6 +75,11 @@ See [Chunking](./README-chunking.md)
 - [chunker.sh](./chunker.sh): Text chunking by dividing a text or an article into syntactically correlated parts of words, like noun groups, verb groups. You apply this feature on the tagged parts of speech text or article. Apply chunking on a text already tagged by PoS tagger. Also see https://nlpforhackers.io/text-chunking/.
 
 All the above scripts check if the respective model(s) exist and downloads them accordingly into the `shared` folder.
+
+
+## Exploring NLP concepts from inside a Java-based Jupyter notebook
+
+See [Exploring NLP concepts from inside a Java-based Jupyter notebook](./README-exploring-nlp-java-jupyter-notebook.md)
 
 ## Docker image on Docker Hub (optional)
 
