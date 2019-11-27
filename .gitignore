@@ -28,4 +28,4 @@ shared/
 *.cache
 .local
 .bash_history
-!shared/notebooks
+!shared/notebooks/*.*
