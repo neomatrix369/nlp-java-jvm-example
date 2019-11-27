@@ -8,10 +8,10 @@ import opennlp.tools.cmdline.parser.ParserTool;
 import opennlp.tools.util.Sequence;
 import java.util.Arrays;
 
-public class Parser {
+public class ParserChunking {
     public static void main(String [] args) throws Exception {
       System.out.println("[Started...]");
-      try (InputStream modelIn = new FileInputStream("../shared/en-parser-chunking.bin")){
+      try (InputStream modelIn = new FileInputStream("en-parser-chunking.bin")){
 
         ParserModel model = new ParserModel(modelIn);
         Parser parser = ParserFactory.create(model);
