@@ -23,9 +23,9 @@ checkIfApacheOpenNLPIsPresent() {
 downloadModel() {
 	echo "Checking if model ${MODEL_FILENAME} (${language}) exists..."
 	if [[ -s "${SHARED_FOLDER}/${MODEL_FILENAME}" ]]; then
-		echo "Found model ${MODEL_FILENAME} (${language})"
+		echo "Found model ${MODEL_FILENAME} (${language}) in '${SHARED_FOLDER}'"
 	else
-		echo "Downloading model ${MODEL_FILENAME} (${language})..."
+		echo "Downloading model ${MODEL_FILENAME} (${language}) in '${SHARED_FOLDER}'"
 		curl -O -J -L \
 		     "${URL_PREFIX}${MODEL_VERSION}/${MODEL_FILENAME}"
     mkdir -p ${SHARED_FOLDER}

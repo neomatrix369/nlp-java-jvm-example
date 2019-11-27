@@ -20,7 +20,8 @@ set -e
 set -u
 set -o pipefail
 
-source common-functions.sh
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+source ${SCRIPT_DIR}/common-functions.sh
 
 showUsageText() {
     cat << HEREDOC
@@ -30,16 +31,18 @@ showUsageText() {
        also see https://nlp.stanford.edu/software/tagger.shtml.
 
        Usage: $0 --method [ maxent | perceptron ]
+                 --downloadModel
                  --text [text]
                  --file [path/to/filename]
                  --help
 
-       --method       [ maxent | perceptron ]
-                        maxent        use the model trained using the Max Entropy algorithm
-                        perceptron    use the model trained using the Perceptron algorithm to train
-       --text         plain text surrounded by quotes
-       --file         name of the file containing text to pass as command arg
-       --help         shows the script usage help text
+       --method          [ maxent | perceptron ]
+                           maxent        use the model trained using the Max Entropy algorithm
+                           perceptron    use the model trained using the Perceptron algorithm to train
+       --downloadModel   download the model needed to perform the Parts of Speech tagging task
+       --text            plain text surrounded by quotes
+       --file            name of the file containing text to pass as command arg
+       --help            shows the script usage help text
 
 HEREDOC
 
@@ -80,6 +83,8 @@ while [[ "$#" -gt 0 ]]; do case $1 in
                          setMethod
                          setCommand;
                          shift;;
+  --downloadModel)       downloadModel;
+                         exit 0;;
   --text)                PLAIN_TEXT="${2:-}";
                          checkIfApacheOpenNLPIsPresent
                          downloadModel;
