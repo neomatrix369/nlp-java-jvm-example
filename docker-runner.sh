@@ -131,6 +131,7 @@ buildImage() {
 	
 	cleanup
 	pushImageToHub
+	cleanup
 }
 
 pushImage() {
@@ -242,7 +243,7 @@ FULL_DOCKER_TAG_NAME=""
 DOCKER_USER_NAME="${DOCKER_USER_NAME:-neomatrix369}"
 
 WORKDIR=/home/jovyan
-JDK_TO_USE=""
+JDK_TO_USE="GRAALVM"  ### we are defaulting to GraalVM
 
 INTERACTIVE_MODE="--interactive --tty"
 TIME_IT="time"
