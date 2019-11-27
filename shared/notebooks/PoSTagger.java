@@ -8,15 +8,17 @@ import java.util.Arrays;
 public class PoSTagger {
     public static void main(String [] args) throws Exception {
         System.out.println("[Started...]");
+        String sentence = getSentence(args, "Most large cities in the US had morning and afternoon newspapers .");
+
+        // The sentence has to be split into words and passed to the POS Tagger function
+        String sentenceAsWords[] = sentence.split(" ");
+
         try (InputStream modelIn = new FileInputStream("en-pos-maxent.bin")) {
             POSModel model = new POSModel(modelIn);
             POSTaggerME tagger = new POSTaggerME(model);
 
-            // The sentence has to be split into words and passed to the POS Tagger function
-            String sentence[] = new String[]{"Most", "large", "cities", "in", "the", "US", "had",
-                                     "morning", "and", "afternoon", "newspapers", "."};
-            System.out.println("Sentence: " + Arrays.toString(sentence));
-            String tags[] = tagger.tag(sentence);
+            System.out.println("Sentence: " + Arrays.toString(sentenceAsWords));
+            String tags[] = tagger.tag(sentenceAsWords);
             System.out.println(Arrays.toString(tags));
             System.out.println();
             
@@ -26,9 +28,19 @@ public class PoSTagger {
             System.out.println();
             
             System.out.println("Tags as sequences (contains probabilities: ");
-            Sequence topSequences[] = tagger.topKSequences(sentence);
+            Sequence topSequences[] = tagger.topKSequences(sentenceAsWords);
             System.out.println(Arrays.toString(topSequences));
         }
         System.out.println("[...Finished]");
+    }
+    
+    public static String getSentence(String [] args, String defaultString) {
+        String result = defaultString;
+
+        if (args.length > 0) {
+            result = args[0];
+        }
+
+        return result;
     }
 }

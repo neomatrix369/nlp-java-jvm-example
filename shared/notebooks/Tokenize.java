@@ -7,11 +7,11 @@ import java.util.Arrays;
 
 public class Tokenize {
     public static void main(String [] args) throws Exception {
+        String sentence = getSentence(args, "An input sample sentence.");
         System.out.println("[Started...]");
         try(InputStream modelIn = new FileInputStream("en-token.bin")) {
             TokenizerModel model = new TokenizerModel(modelIn);
             TokenizerME tokenizer = new TokenizerME(model);
-            String sentence = "An input sample sentence.";
             System.out.println("Sentence: " + sentence);    
             String tokens[] = tokenizer.tokenize(sentence);
             System.out.println(Arrays.toString(tokens));
@@ -23,5 +23,15 @@ public class Tokenize {
             System.out.println(Arrays.toString(tokensUsingSpans));
         }
         System.out.println("[...Finished]");
+    }
+
+    public static String getSentence(String [] args, String defaultString) {
+        String result = defaultString;
+
+        if (args.length > 0) {
+            result = args[0];
+        }
+
+        return result;
     }
 }

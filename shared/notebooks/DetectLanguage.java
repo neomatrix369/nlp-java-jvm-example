@@ -9,14 +9,14 @@ import java.util.Arrays;
 public class DetectLanguage {
     public static void main(String [] args) throws Exception {
         System.out.println("[Started...]");
+        String sentence = getSentence(args, "This is a sample text.");
         try (InputStream modelIn = new FileInputStream("langdetect-183.bin")) {
             LanguageDetectorModel langModel = new LanguageDetectorModel(modelIn);
-            String inputText = "This is a sample text.";
-            System.out.println("Sentence: " + inputText);
+            System.out.println("Sentence: " + sentence);
 
             // Get the most probable language
             LanguageDetector myCategorizer = new LanguageDetectorME(langModel);
-            Language bestLanguage = myCategorizer.predictLanguage(inputText);
+            Language bestLanguage = myCategorizer.predictLanguage(sentence);
             System.out.println("Best language: " + bestLanguage.getLang());
             System.out.println("Best language confidence: " + bestLanguage.getConfidence());
 
@@ -26,5 +26,15 @@ public class DetectLanguage {
             System.out.println("Predict languages (with confidence): " + Arrays.toString(languages));
         }
         System.out.println("[...Finished]");
+    }
+    
+    public static String getSentence(String [] args, String defaultString) {
+        String result = defaultString;
+
+        if (args.length > 0) {
+            result = args[0];
+        }
+
+        return result;
     }
 }

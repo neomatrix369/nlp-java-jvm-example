@@ -11,17 +11,26 @@ import java.util.Arrays;
 public class ParserChunking {
     public static void main(String [] args) throws Exception {
       System.out.println("[Started...]");
+      String sentence = getSentence(args, "The quick brown fox jumps over the lazy dog.");
       try (InputStream modelIn = new FileInputStream("en-parser-chunking.bin")){
-
         ParserModel model = new ParserModel(modelIn);
         Parser parser = ParserFactory.create(model);
 
-        String sentence = "The quick brown fox jumps over the lazy dog.";
         Parse topParses[] = ParserTool.parseLine(sentence, parser, 1);
         
         System.out.println("Sentence: " + sentence + "\n");
         Arrays.stream(topParses).forEach(System.out::println);
       }
       System.out.println("[...Finished]");
+    }
+
+    public static String getSentence(String [] args, String defaultString) {
+        String result = defaultString;
+
+        if (args.length > 0) {
+            result = args[0];
+        }
+
+        return result;
     }
 }

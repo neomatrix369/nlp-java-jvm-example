@@ -33,4 +33,14 @@ public class Chunker {
         }
         System.out.println("[...Finished]");
     }
+    
+    public static String getSentence(String [] args, String defaultString) {
+        String result = defaultString;
+
+        if (args.length > 0) {
+            result = args[0];
+        }
+
+        return result;
+    }
 }

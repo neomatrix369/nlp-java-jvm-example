@@ -2,117 +2,145 @@
     name: detect-language
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh DetectLanguage
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (DetectLanguage) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectLanguage.java
       - name: model
         description: (DetectLanguage) Model file to perform the necessary action
         default: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/opennlp/models/langdetect/1.8.3/langdetect-183.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (DetectLanguage) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectLanguage.java    
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
     name: detect-sentence
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh DetectSentence
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (DetectSentence) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectSentence.java
       - name: model
         description: (DetectSentence) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-sent.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (DetectSentence) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/DetectSentence.java
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
     name: tokenize-sentence
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh Tokenize
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (Tokenize) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/Tokenize.java
       - name: model
         description: (Tokenize) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-token.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (Tokenize) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/Tokenize.java
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
     name: name-finder-person
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh NameFinderPerson
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (NameFinderPerson) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/NameFinderPerson.java
       - name: model
         description: (NameFinderPerson) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-ner-person.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (NameFinderPerson) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/NameFinderPerson.java
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
     name: pos-tagger
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh PoSTagger
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (PoSTagger) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/PoSTagger.java
       - name: model
         description: (PoSTagger) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-pos-maxent.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (PoSTagger) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/PoSTagger.java
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
     name: chunker
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh Chunker
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (Chunker) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/Chunker.java
       - name: model
         description: (Chunker) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-chunker.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (Chunker) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/Chunker.java
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
 
 - step:
     name: parser
     image: neomatrix369/nlp-java:0.2
     command:
-      - ./run-commands.sh ParserChunking
+      - ./run-commands.sh "{parameter-value:java-program}" "{parameter-value:sentence}"
     inputs:
-      - name: java-program
-        description: (ParserChunking) snippet of java source code that loads the model and runs an example
-        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/ParserChunking.java
       - name: model
         description: (ParserChunking) Model file to perform the necessary action
         default: http://opennlp.sourceforge.net/models-1.5/en-parser-chunking.bin
       - name: apache-opennlp-jar
         description: The Apache OpenNLP library that helps with loading the model and running the NLP task
         default: http://apache.mirror.anlx.net/opennlp/opennlp-1.9.1/apache-opennlp-1.9.1-bin.tar.gz
+    parameters:
+      - name: java-program
+        description: (ParserChunking) snippet of java source code that loads the model and runs an example
+        default: https://raw.githubusercontent.com/neomatrix369/nlp-java-jvm-example/integrating-nlp-java-with-jupyhai/shared/notebooks/ParserChunking.java
+      - name: sentence
+        type: string
+        description: Input sentence to process using the NLP action
     environment: aws-eu-west-1-g2-2xlarge
