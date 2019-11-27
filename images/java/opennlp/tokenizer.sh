@@ -45,14 +45,17 @@ HEREDOC
 
 APACHE_OPENNLP_CMD=""
 setCommand() {
-  APACHE_OPENNLP_CMD="${OPENNLP_BINARY} ${METHOD} ${SHARED_FOLDER}/${MODEL_FILENAME}"
+  if [[ "${METHOD}" = "SimpleTokenizer" ]]; then
+    APACHE_OPENNLP_CMD="${OPENNLP_BINARY} ${METHOD}"
+  else
+    APACHE_OPENNLP_CMD="${OPENNLP_BINARY} ${METHOD} ${SHARED_FOLDER}/${MODEL_FILENAME}"
+  fi
 }
 
 setMethod() {
   METHOD=$(echo ${METHOD} | awk '{print tolower($0)}' || true)
   if [[ "${METHOD}" = "simple" ]]; then
     METHOD=SimpleTokenizer;
-    MODEL_FILENAME=""
   elif [[ "${METHOD}" = "learnable" ]]; then
     METHOD=TokenizerME
     MODEL_FILENAME="${language}-token.bin"
@@ -76,7 +79,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
                          checkIfApacheOpenNLPIsPresent
                          setCommand
                          TMPFILE=$(mktemp)
-                         echo ${PLAIN_TEXT} > ${TMPFILE}
+                         echo "${PLAIN_TEXT}" > ${TMPFILE}
                          cat ${TMPFILE} | ${APACHE_OPENNLP_CMD}
                          rm -f ${TMPFILE} 
                          exit 0;;
