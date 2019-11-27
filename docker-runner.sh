@@ -72,9 +72,11 @@ runContainer() {
 		VOLUMES_SHARED="--volume "$(pwd)/shared/notebooks":${WORKDIR}/work --volume "$(pwd)"/shared:${WORKDIR}/shared";
 
 	    if [[ -z "${VALOHAI_TOKEN:-}" ]]; then
-			read -s -p "Enter the Valohai token you generated from your account on valohai.com: " VALOHAI_TOKEN
+			read -s -p "Enter (or paste) the Valohai token you generated from your account on valohai.com: " VALOHAI_TOKEN
+		else 
+			echo "The expected environment variable VALOHAI_TOKEN has been set."
 	    fi
-		
+
 		INTERACTIVE_MODE="--detach ${INTERACTIVE_MODE}"
 	else
 		## When run in the console mode (command-prompt available)
