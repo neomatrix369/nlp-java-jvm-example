@@ -2,9 +2,8 @@
 
 NLP Java: [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) | NLP Clojure: [![NLP Clojure](https://img.shields.io/docker/pulls/neomatrix369/nlp-clojure.svg)](https://hub.docker.com/r/neomatrix369/nlp-clojure) | NLP Kotlin: [![NLP Kotlin](https://img.shields.io/docker/pulls/neomatrix369/nlp-kotlin.svg)](https://hub.docker.com/r/neomatrix369/nlp-kotlin) | NLP Scala: [![NLP Scala](https://img.shields.io/docker/pulls/neomatrix369/nlp-scala.svg)](https://hub.docker.com/r/neomatrix369/nlp-scala)
 
-Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
-
 ---
+
 Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
 
 Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](https://github.com/neomatrix369/awesome-ai-ml-dl/blob/master/natural-language-processing/README.md#natural-language-processing-nlp) section.
