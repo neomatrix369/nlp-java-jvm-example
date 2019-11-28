@@ -20,7 +20,8 @@ set -e
 set -u
 set -o pipefail
 
-source common-functions.sh
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+source ${SCRIPT_DIR}/common-functions.sh
 
 showUsageText() {
     cat << HEREDOC
@@ -29,13 +30,15 @@ showUsageText() {
        (https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) 
        for legend of token types), also see https://nlp.stanford.edu/software/lex-parser.shtml.
 
-       Usage: $0 --text [text]
+       Usage: $0 --downloadModel
+                 --text [text]
                  --file [path/to/filename]
                  --help
 
-       --text      plain text surrounded by quotes
-       --file      name of the file containing text to pass as command arg
-       --help      shows the script usage help text
+       --downloadModel   download the model needed to perform the parsing task
+       --text            plain text surrounded by quotes
+       --file            name of the file containing text to pass as command arg
+       --help            shows the script usage help text
 
 HEREDOC
 
@@ -50,6 +53,8 @@ checkIfNoParamHasBeenPassedIn "$#"
 
 while [[ "$#" -gt 0 ]]; do case $1 in
   --help)                showUsageText;
+                         exit 0;;
+  --downloadModel)       downloadModel;
                          exit 0;;
   --text)                PLAIN_TEXT="${2:-}";
                          checkIfApacheOpenNLPIsPresent

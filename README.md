@@ -2,21 +2,19 @@
 
 NLP Java: [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) | NLP Clojure: [![NLP Clojure](https://img.shields.io/docker/pulls/neomatrix369/nlp-clojure.svg)](https://hub.docker.com/r/neomatrix369/nlp-clojure) | NLP Kotlin: [![NLP Kotlin](https://img.shields.io/docker/pulls/neomatrix369/nlp-kotlin.svg)](https://hub.docker.com/r/neomatrix369/nlp-kotlin) | NLP Scala: [![NLP Scala](https://img.shields.io/docker/pulls/neomatrix369/nlp-scala.svg)](https://hub.docker.com/r/neomatrix369/nlp-scala)
 
-This area in the repo is a result of the blog post [Exploring NLP concepts using Apache OpenNLP](https://medium.com/@neomatrix369/exploring-nlp-concepts-using-apache-opennlp-4d59c3cac8) | [Original post](https://blog.valohai.com/exploring-nlp-concepts-using-apache-opennlp-1?from=3oxenia9mtr6). Please refer to the post before considering using this repo to understand better on how to use the different aspects of it.
-
 ---
 
-Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 8 (from OpenJDK or another source) or GraalVM.
+Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
 
-Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing#natural-language-processing-nlp) section.
+Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](https://github.com/neomatrix369/awesome-ai-ml-dl/blob/master/natural-language-processing/README.md#natural-language-processing-nlp) section.
 
 ## Goals
 
 - Run docker container containing NLP libraries/frameworks written in Java/JVM languages
 - Ability to create custom docker images (scripts & docs provided)
 - Ability to debug the docker container
-- Run using the traditional JDK (OpenJDK or vendor specific versions)
-- Run using the polyglot JVM i.e. GraalVM JDK (Community version from Oracle Labs)
+- Run using the traditional JDK 11 (OpenJDK or vendor specific versions)
+- Run using the polyglot JVM i.e. GraalVM JDK (Community version from Oracle Labs), when running performing operations from the CLI 
 - Play with and learn from with some examples for each of the libraries provided
 
 ## Libraries / frameworks provided
@@ -50,7 +48,7 @@ Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/
 
 ## Scripts provided
 
-**Scroll up pass the top of the README page to find below mentioned scripts.**
+**Scroll up to find the below provided scripts**
 
 - [docker-runner.sh](./docker-runner.sh): can perform a number of the below actions depending on the flags passed to it:
     - runs the container and brings you to the command prompt inside the container:
@@ -70,8 +68,6 @@ $ ./docker-runner.sh --help
        Usage: ./docker-runner.sh --dockerUserName [docker user name]
                                  --language [language id]
                                  --detach
-                                 --jdk [GRAALVM]
-                                 --javaopts [java opt arguments]
                                  --buildImage
                                  --runContainer
                                  --pushImageToHub
@@ -79,7 +75,7 @@ $ ./docker-runner.sh --help
                                  --help
 
        --dockerUserName      docker user name as on Docker Hub
-                             (mandatory with build, run and push commands)
+                             (mandatory with build and push commands)
        --language            language id as in java, clojure, scala, etc...
        --detach              run container and detach from it,
                              return control to console
@@ -163,5 +159,4 @@ Please have a look at the [CONTRIBUTING](CONTRIBUTING.md) guidelines, also have 
 
 ---
 
-Back to [Awesome AI/ML/DL NLP page](https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing#natural-language-processing-nlp) </br>
-Back to [Awesome AI/ML/DL main page (table of contents)](https://github.com/neomatrix369/awesome-ai-ml-dl#awesome-ai-ml-dl--)
+Go to [NLP page](https://github.com/neomatrix369/awesome-ai-ml-dl/blob/master/natural-language-processing/README.md#natural-language-processing-nlp)

@@ -1,16 +1,21 @@
 # Apache OpenNLP [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) 
 
-Run a docker container with Apache OpenNLP written in Java, running under the traditional Java 8 (from OpenJDK or another source) or GraalVM.
+Run a docker container with Apache OpenNLP written in Java, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM (19.3.0 or higher).
 
 Find out more about [Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing) from the [NLP section](https://github.com/neomatrix369/awesome-ai-ml-dl/tree/master/natural-language-processing#natural-language-processing-nlp) section.
 
-Startup in traditional JDK or GraalVM mode.
+Startup in traditional JDK or GraalVM mode, by default we are running in GraalVM mode.
 
 ## Goals
 
 - Run the Docker container containing the Apache OpenNLP tool by using `./docker-runner --runContainer`
-- Run in GraalVM mode inside the docker container by using `switchToGraal` at the prompt (polyglot JVM i.e. GraalVM JDK Community version from Oracle Labs) (optional)
+- Run in GraalVM mode inside the docker container by using `switchToGraal` at the prompt (polyglot JVM i.e. GraalVM JDK Community version from Oracle Labs) (default option)
+  - To run tradition Java 11, use `switchTo11` at the prompt (optional)
 - Run a number of NLP actions to explore the Apache OpenNLP tool shown below in the [Exploring NLP concepts](#exploring-nlp-concepts) section
+- Run the Docker container in the notebook mode, containing the Apache OpenNLP tool by using `./docker-runner --notebookMode --runContainer`
+- Perform NLP actions similar to the ones in the [Exploring NLP concepts](#exploring-nlp-concepts) section
+  - Exploring the Apache OpenNLP Java APIs via the notebook directly
+  - Exploring the Apache OpenNLP Java APIs via the notebook with the help of remote cloud services
 
 ## Exploring NLP concepts
 
@@ -71,11 +76,36 @@ See [Chunking](./README-chunking.md)
 
 All the above scripts check if the respective model(s) exist and downloads them accordingly into the `shared` folder.
 
+
+## Exploring NLP concepts from inside a Java-based Jupyter notebook
+
+See [Exploring NLP concepts from inside a Java-based Jupyter notebook](./README-exploring-nlp-java-jupyter-notebook.md)
+
 ## Docker image on Docker Hub (optional)
 
 Find the [NLP Java/JVM Docker Image on Docker Hub](https://hub.docker.com/r/neomatrix369/nlp-java). The `docker-runner.sh --pushImageToHub` script pushes the image to the Docker hub and the `docker-runner.sh --runContainer` script runs it from the local repository. If absent, in the the local repository, it downloads this image from Docker Hub.
 
 ## Resources
+
+### IJava (Jupyter interpreter)
+
+- [Github](https://github.com/SpencerPark/IJava)
+- [Docs](https://github.com/SpencerPark/IJava/tree/master/docs)
+- [`%system` Java cell magic implementation](https://github.com/SpencerPark/IJava/pull/78)
+- [Docker image with IJava + Jupyhai + other dependencies](https://hub.docker.com/r/neomatrix369/nlp-java)
+
+### Jupyhai
+
+- [Version Control for Jupyter Notebooks](https://get.valohai.com/jupyter-notebook-version-control)
+- [Blogs on Jupyter Notebooks](https://blog.valohai.com/topic/jupyter-notebook)
+    - [Valohai's Jupyter Notebook Extension](https://blog.valohai.com/valohai-jupyter-notebook-extension)
+    - [Asynchronous Workflows in Data Science](https://blog.valohai.com/asynchronous-workflows-in-data-science)
+    - [Automatic Version Control Meets Jupyter Notebooks](https://blog.valohai.com/automatic-version-control-meets-jupyter-notebooks)
+    - [Level Up Your Machine Learning Code from Notebook to Production](https://blog.valohai.com/leveling-up-your-ml-code-from-notebook)
+    - [Run Jupyter Notebook On Any Cloud Provider](https://blog.valohai.com/run-jupyter-notebook-any-cloud-provider)
+    - [Updates for Valohai Powered Notebooks](https://blog.valohai.com/jupyter-extension-updates)
+- [Version control for Jupyter Notebooks (video)](https://www.youtube.com/watch?v=IOv-yps387Q&list=PLMskd1Tlj2wZjKK15qNMjYeJZtapUK01h&index=5)
+- [Docs](https://docs.valohai.com/jupyter/index.html)
 
 ### Apache OpenNLP
 
@@ -120,6 +150,11 @@ Find the [NLP Java/JVM Docker Image on Docker Hub](https://hub.docker.com/r/neom
           * Examples
               * https://github.com/eclipse/deeplearning4j-examples/tree/master/dl4j-examples
               * https://github.com/eclipse/deeplearning4j/tree/master/deeplearning4j/deeplearning4j-nlp-parent
+
+### Other related posts
+  - [How to do Deep Learning for Java on the Valohai Platform?](https://blog.valohai.com/nlp_with_dl4j_in_java_all_from_the_command-line?from=3oxenia9mtr6)
+  - [NLP with DL4J in Java, all from the command-line](https://blog.valohai.com/nlp_with_dl4j_in_java_all_from_the_command-line?from=3oxenia9mtr6)
+  - [Exploring NLP concepts using Apache OpenNLP](https://blog.valohai.com/exploring-nlp-concepts-using-apache-opennlp-1)
 
 # Contributing
 

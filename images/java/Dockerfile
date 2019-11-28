@@ -40,6 +40,5 @@ COPY mallet.sh mallet.sh
 ### https://github.com/datquocnguyen/RDRPOSTagger
 COPY rdrposttagger.sh rdrposttagger.sh
 
-RUN chown -R nlp-java:nlp-java .
-
-USER nlp-java
+ARG GROUP
+RUN cd ${WORKDIR} && chown -R jovyan:${GROUP} .

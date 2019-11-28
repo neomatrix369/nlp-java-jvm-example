@@ -20,7 +20,8 @@ set -e
 set -u
 set -o pipefail
 
-source common-functions.sh
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+source ${SCRIPT_DIR}/common-functions.sh
 
 showUsageText() {
     cat << HEREDOC
@@ -30,13 +31,15 @@ showUsageText() {
        chunking on a text already tagged by PoS tagger. Also see 
        https://nlpforhackers.io/text-chunking/.    
 
-       Usage: $0 --text [text]
+       Usage: $0 --downloadModel
+                 --text [text]
                  --file [path/to/filename]
                  --help
 
-       --text      plain text surrounded by quotes
-       --file      name of the file containing text to pass as command arg
-       --help      shows the script usage help text
+       --downloadModel   download the model needed to perform the text chunking task
+       --text            plain text surrounded by quotes
+       --file            name of the file containing text to pass as command arg
+       --help            shows the script usage help text
 
 HEREDOC
 
@@ -44,12 +47,14 @@ HEREDOC
 }
 
 MODEL_FILENAME="${language}-chunker.bin"
-APACHE_OPENNLP_CMD="${OPENNLP_BINARY} ChunkerME ${SHARED_FOLDER}/${MODEL_FILENAME}" 
+APACHE_OPENNLP_CMD="${OPENNLP_BINARY} ChunkerME ${SHARED_FOLDER}/${MODEL_FILENAME}"
 
 checkIfNoParamHasBeenPassedIn "$#"
 
 while [[ "$#" -gt 0 ]]; do case $1 in
   --help)                showUsageText;
+                         exit 0;;
+  --downloadModel)       downloadModel;
                          exit 0;;
   --text)                PLAIN_TEXT="${2:-}";
                          checkIfApacheOpenNLPIsPresent

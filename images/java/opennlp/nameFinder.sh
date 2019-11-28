@@ -20,7 +20,8 @@ set -e
 set -u
 set -o pipefail
 
-source common-functions.sh
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+source ${SCRIPT_DIR}/common-functions.sh
 
 showUsageText() {
     cat << HEREDOC
@@ -28,20 +29,23 @@ showUsageText() {
        percentage information in a single line text or article.
 
        Usage: $0 --method [ person | location | date | time | money | organization | percentage ]
+                 --downloadModel
                  --text [text]
                  --file [path/to/filename]
                  --help
-       --method    [ person | location | date | time | money | organization | percentage ]
-                     person       - find name of persons in text
-                     location     - find location names in text
-                     date         - find dates mentioned in text
-                     time         - find time mentioned in text
-                     money        - find money / currency mentioned in text
-                     organization - find organization names mentioned in text
-                     percentage   - find percentages mentioned in text
-       --text      plain text surrounded by quotes
-       --file      name of the file containing text to pass as command arg
-       --help      shows the script usage help text
+
+       --method          [ person | location | date | time | money | organization | percentage ]
+                           person       - find name of persons in text
+                           location     - find location names in text
+                           date         - find dates mentioned in text
+                           time         - find time mentioned in text
+                           money        - find money / currency mentioned in text
+                           organization - find organization names mentioned in text
+                           percentage   - find percentages mentioned in text
+       --downloadModel   download the model needed to perform the parsing task
+       --text            plain text surrounded by quotes
+       --file            name of the file containing text to pass as command arg
+       --help            shows the script usage help text
 
 HEREDOC
 
@@ -53,7 +57,7 @@ setModelFilename() {
 }
 
 setCommand() {
-  APACHE_OPENNLP_CMD="${OPENNLP_BINARY} TokenNameFinder ${SHARED_FOLDER}/${MODEL_FILENAME}" 
+  APACHE_OPENNLP_CMD="${OPENNLP_BINARY} TokenNameFinder ${SHARED_FOLDER}/${MODEL_FILENAME}"
 }
 
 checkMethod() {
@@ -79,6 +83,8 @@ while [[ "$#" -gt 0 ]]; do case $1 in
                          setModelFilename
                          setCommand;
                          shift;;
+  --downloadModel)       downloadModel;
+                         exit 0;;
   --text)                PLAIN_TEXT="${2:-}";
                          checkIfApacheOpenNLPIsPresent
                          checkMethod

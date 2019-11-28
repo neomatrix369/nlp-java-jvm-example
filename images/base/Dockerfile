@@ -1,41 +1,51 @@
-FROM adoptopenjdk/openjdk8:jdk8u212-b03
+FROM valohai/jupyhai as base-image
 
-WORKDIR /home/nlp-java
+### Install JDK 11 from AdoptOpenJDK images
 
-### GraalVM installation
-ARG GRAALVM_VERSION
-ENV GRAALVM_VERSION="${GRAALVM_VERSION}"
+COPY --from=adoptopenjdk/openjdk11 /opt/java /opt/java
 
-RUN curl -O -L -J https://github.com/oracle/graal/releases/download/vm-${GRAALVM_VERSION}/graalvm-ce-linux-amd64-${GRAALVM_VERSION}.tar.gz
+### Install GraalVM for Java 11 from AdoptOpenJDK images
 
-RUN tar xzf graalvm-ce-linux-amd64-${GRAALVM_VERSION}.tar.gz -C /opt/java/
+COPY --from=oracle/graalvm-ce:19.3.0-java11 /opt/graalvm-ce-java11-19.3.0 /opt/java/graalvm
+
+### Install curl needed for rest of the tasks
+
+USER root
+RUN apt-get update && apt-get install -qy curl
+
+ARG WORKDIR
+WORKDIR ${WORKDIR}
+
+### Java setup
+
+ARG JAVA_9_HOME
 
 ARG GRAALVM_HOME
 ENV GRAALVM_HOME=${GRAALVM_HOME}
+ENV JAVA_HOME=${GRAALVM_HOME}
+ENV PATH=${GRAALVM_HOME}/bin:${PATH}
 
-ARG JAVA_8_HOME
-ENV JAVA_8_HOME=${JAVA_8_HOME}
+### Test Java (Traditional and GraalVM)
 
-### Remove unused Java binaries
+RUN ${JAVA_9_HOME}/bin/java -version
 
-RUN rm graalvm-ce-linux-amd64-${GRAALVM_VERSION}.tar.gz
-RUN rm -fr ${GRAALVM_HOME}/languages ${GRAALVM_HOME}/jre/languages 
-
-### Test Java
-
-RUN java -version
+RUN ${GRAALVM_HOME}/bin/java -version
 
 ### Install packages
+
 RUN apt-get update && apt-get install -qy unzip git vim
 
 RUN unzip -version
 RUN git --version
 RUN vim --version
 
+### Install the Jupyter Java Kernel
+
+COPY install-java-kernel.sh install-java-kernel.sh
+RUN ./install-java-kernel.sh --buildJar
+RUN ./install-java-kernel.sh --installJar
+
 ### Setup user
-
-RUN groupadd -r nlp-java && useradd -g nlp-java nlp-java
-RUN cd /home/nlp-java
-RUN chown -R nlp-java:nlp-java .
-
-COPY .bashrc .bashrc
+COPY .bashrc .bashrc_custom
+RUN cat .bashrc_custom >> /home/jovyan/.bashrc
+RUN rm .bashrc_custom

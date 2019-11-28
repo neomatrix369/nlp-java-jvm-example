@@ -20,23 +20,26 @@ set -e
 set -u
 set -o pipefail
 
-source common-functions.sh
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+source ${SCRIPT_DIR}/common-functions.sh
 
 showUsageText() {
     cat << HEREDOC
        Tokenise a line of text or an article into it’s smaller components (i.e. words, punctuation, numbers).
        
        Usage: $0 --method [ simple | learnable ]
+                 --downloadModel
                  --text [text]
                  --file [path/to/filename]
                  --help
 
-       --method       [ simple | learnable ]
-                        simple        use the simple tokenisation method
-                        learnable     use the learned model to perform tokenisation
-       --text         plain text surrounded by quotes
-       --file         name of the file containing text to pass as command arg
-       --help         shows the script usage help text
+       --method          [ simple | learnable ]
+                           simple        use the simple tokenisation method
+                           learnable     use the learned model to perform tokenisation
+       --downloadModel   download the model needed to perform the tokenisation task
+       --text            plain text surrounded by quotes
+       --file            name of the file containing text to pass as command arg
+       --help            shows the script usage help text
 
 HEREDOC
 
@@ -75,13 +78,15 @@ while [[ "$#" -gt 0 ]]; do case $1 in
   --method)              METHOD="${2:-}";
                          setMethod
                          shift;;
+  --downloadModel)       downloadModel;
+                         exit 0;;
   --text)                PLAIN_TEXT="${2:-}";
                          checkIfApacheOpenNLPIsPresent
                          setCommand
                          TMPFILE=$(mktemp)
                          echo "${PLAIN_TEXT}" > ${TMPFILE}
                          cat ${TMPFILE} | ${APACHE_OPENNLP_CMD}
-                         rm -f ${TMPFILE} 
+                         rm -f ${TMPFILE}
                          exit 0;;
   --file)                FILENAME="${2:-}";
                          checkIfApacheOpenNLPIsPresent
