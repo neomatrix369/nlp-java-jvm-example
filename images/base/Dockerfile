@@ -8,10 +8,6 @@ COPY --from=adoptopenjdk/openjdk11 /opt/java /opt/java
 
 COPY --from=oracle/graalvm-ce:19.3.0-java11 /opt/graalvm-ce-java11-19.3.0 /opt/java/graalvm
 
-### Install GraalVM for Java 11 from AdoptOpenJDK images
-
-COPY --from=oracle/graalvm-ce:19.3.0-java11 /opt/graalvm-ce-java11-19.3.0 /opt/java/graalvm
-
 ### Install curl needed for rest of the tasks
 
 USER root
