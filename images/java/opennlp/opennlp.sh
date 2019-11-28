@@ -4,10 +4,18 @@ set -e
 set -u
 set -o pipefail
 
-source ../common.sh
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)"
+source ${SCRIPT_DIR}/common.sh
 
-mkdir -p ../shared
-cd ../shared
+if [[ -f /.dockerenv ]]; then
+	SHARED_FOLDER="../shared/"
+else
+	SHARED_FOLDER="../../../shared/"
+fi
+
+mkdir -p ${SHARED_FOLDER}
+cd ${SHARED_FOLDER}
+
 FOLDER=apache-opennlp-1.9.1-bin
 ARTIFACT=${FOLDER}.tar.gz
 
