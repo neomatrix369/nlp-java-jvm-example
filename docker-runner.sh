@@ -179,7 +179,6 @@ showUsageText() {
     cat << HEREDOC
 
        Usage: $0 --dockerUserName [Docker user name]
-                                 --valohaiUserName [Valohai user name]
                                  --language [language id]
                                  --detach
                                  --jdk [GRAALVM]
@@ -193,8 +192,6 @@ showUsageText() {
 
        --dockerUserName      your Docker user name as on Docker Hub
                              (mandatory with build, run and push commands)
-       --valohaiUserName     your Valohai user name as created on Valohai.com
-                             (mandatory with notebook that uses the vh client)
        --language            language id as in java, clojure, scala, etc...
        --detach              run container and detach from it,
                              return control to console
