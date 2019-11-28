@@ -87,6 +87,26 @@ Find the [NLP Java/JVM Docker Image on Docker Hub](https://hub.docker.com/r/neom
 
 ## Resources
 
+### IJava (Jupyter interpreter)
+
+- [Github](https://github.com/SpencerPark/IJava)
+- [Docs](https://github.com/SpencerPark/IJava/tree/master/docs)
+- [`%system` Java cell magic implementation](https://github.com/SpencerPark/IJava/pull/78)
+- [Docker image with IJava + Jupyhai + other dependencies](https://hub.docker.com/r/neomatrix369/nlp-java)
+
+### Jupyhai
+
+- [Version Control for Jupyter Notebooks](https://get.valohai.com/jupyter-notebook-version-control)
+- [Blogs on Jupyter Notebooks](https://blog.valohai.com/topic/jupyter-notebook)
+    - [Valohai's Jupyter Notebook Extension](https://blog.valohai.com/valohai-jupyter-notebook-extension)
+    - [Asynchronous Workflows in Data Science](https://blog.valohai.com/asynchronous-workflows-in-data-science)
+    - [Automatic Version Control Meets Jupyter Notebooks](https://blog.valohai.com/automatic-version-control-meets-jupyter-notebooks)
+    - [Level Up Your Machine Learning Code from Notebook to Production](https://blog.valohai.com/leveling-up-your-ml-code-from-notebook)
+    - [Run Jupyter Notebook On Any Cloud Provider](https://blog.valohai.com/run-jupyter-notebook-any-cloud-provider)
+    - [Updates for Valohai Powered Notebooks](https://blog.valohai.com/jupyter-extension-updates)
+- [Version control for Jupyter Notebooks (video)](https://www.youtube.com/watch?v=IOv-yps387Q&list=PLMskd1Tlj2wZjKK15qNMjYeJZtapUK01h&index=5)
+- [Docs](https://docs.valohai.com/jupyter/index.html)
+
 ### Apache OpenNLP
 
 - [Apache OpenNLP](https://opennlp.apache.org/) | [GitHub](https://github.com/apache/opennlp) | [Mailing list](https://opennlp.apache.org/mailing-lists.html) | [@apacheopennlp](https://twitter.com/@apacheopennlp)
@@ -130,6 +150,11 @@ Find the [NLP Java/JVM Docker Image on Docker Hub](https://hub.docker.com/r/neom
           * Examples
               * https://github.com/eclipse/deeplearning4j-examples/tree/master/dl4j-examples
               * https://github.com/eclipse/deeplearning4j/tree/master/deeplearning4j/deeplearning4j-nlp-parent
+
+### Other related posts
+  - [How to do Deep Learning for Java on the Valohai Platform?](https://blog.valohai.com/nlp_with_dl4j_in_java_all_from_the_command-line?from=3oxenia9mtr6)
+  - [NLP with DL4J in Java, all from the command-line](https://blog.valohai.com/nlp_with_dl4j_in_java_all_from_the_command-line?from=3oxenia9mtr6)
+  - [Exploring NLP concepts using Apache OpenNLP](https://blog.valohai.com/exploring-nlp-concepts-using-apache-opennlp-1)
 
 # Contributing
 
