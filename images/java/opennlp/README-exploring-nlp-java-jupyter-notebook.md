@@ -21,14 +21,9 @@ You will need the following from this point forward:
 
 Note: At the time of the writing version 1.9.1 of [Apache OpenNLP](https://opennlp.apache.org/) was available.
 
-We have put [together scripts](https://github.com/valohai/nlp-java-jvm-example#scripts-provided) (also see scripts in this folder) to make these steps easy for everyone:
+We have put [together scripts](https://github.com/valohai/nlp-java-jvm-example#scripts-provided) (also see scripts in this folder) to make these steps easy for everyone.
 
-    $ git clone git@github.com:valohai/nlp-java-jvm-example.git
-    or 
-    $ git clone https://github.com/valohai/nlp-java-jvm-example.git
-    $ cd nlp-java-jvm-example
-
-This will lead us to the folder with the following files in it:
+Once inside the `nlp-java-jvm-example` folder we will see the following files:
 
     LICENSE.txt      
     README.md        
