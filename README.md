@@ -2,7 +2,7 @@
 
 NLP Java: [![NLP Java](https://img.shields.io/docker/pulls/neomatrix369/nlp-java.svg)](https://hub.docker.com/r/neomatrix369/nlp-java) | NLP Clojure: [![NLP Clojure](https://img.shields.io/docker/pulls/neomatrix369/nlp-clojure.svg)](https://hub.docker.com/r/neomatrix369/nlp-clojure) | NLP Kotlin: [![NLP Kotlin](https://img.shields.io/docker/pulls/neomatrix369/nlp-kotlin.svg)](https://hub.docker.com/r/neomatrix369/nlp-kotlin) | NLP Scala: [![NLP Scala](https://img.shields.io/docker/pulls/neomatrix369/nlp-scala.svg)](https://hub.docker.com/r/neomatrix369/nlp-scala)
 
-This area in the repo is a result of the blog post [Exploring NLP concepts using Apache OpenNLP](https://medium.com/@neomatrix369//exploring-nlp-concepts-using-apache-opennlp-4d59c3cac8) | [Original post](https://blog.valohai.com/exploring-nlp-concepts-using-apache-opennlp-1?from=3oxenia9mtr6). Please refer to the post before considering using this repo to understand better on how to use the different aspects of it.
+This area in the repo is a result of the blog post [Exploring NLP concepts using Apache OpenNLP](https://medium.com/@neomatrix369/exploring-nlp-concepts-using-apache-opennlp-4d59c3cac8) | [Original post](https://blog.valohai.com/exploring-nlp-concepts-using-apache-opennlp-1?from=3oxenia9mtr6). Please refer to the post before considering using this repo to understand better on how to use the different aspects of it.
 
 ---
 Run a docker container with NLP libraries/frameworks written in Java/JVM languages, running under the traditional Java 11 (from OpenJDK or another source) or GraalVM.
