@@ -4,7 +4,7 @@ FROM valohai/jupyhai as base-image
 
 COPY --from=adoptopenjdk/openjdk11 /opt/java /opt/java
 
-### Install GraalVM for Java 11 from AdoptOpenJDK images
+### Install GraalVM for Java 11
 
 COPY --from=oracle/graalvm-ce:19.3.0-java11 /opt/graalvm-ce-java11-19.3.0 /opt/java/graalvm
 
