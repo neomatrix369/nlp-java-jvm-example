@@ -33,3 +33,4 @@ shared/apache*
 !shared/notebooks/*.*
 shared/notebooks/.ipynb_checkpoints
 shared/notebooks/.valohai
+shared/notebooks/.jupyhai_tmp/

@@ -5,7 +5,7 @@
 You will need the following from this point forward:
 
 - Git client 2.x or higher (an account on GitHub to fork the repo)
-- Java 9 or higher (suggest also install [GraalVM CE](https://www.graalvm.org/) 19.x or higher)
+- Java 11 or higher (suggest also install [GraalVM CE](https://www.graalvm.org/) 19.x or higher)
 - Docker CE 19.x or higher and check it is running before going further
 - Ability to run [shell scripts](../../../README.md#scripts-provided) (also see scripts in this folder) from the CLI
 - Understand reading/writing shell scripts (optional)

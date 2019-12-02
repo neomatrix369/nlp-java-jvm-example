@@ -116,7 +116,7 @@ buildImage() {
 	time docker pull ${BASE_FULL_DOCKER_TAG_NAME}:${BASE_IMAGE_VERSION} || true
 	time docker build                                                  \
 	             --build-arg WORKDIR=${WORKDIR}                        \
-	             --build-arg JAVA_9_HOME="/opt/java/openjdk"           \
+	             --build-arg JAVA_11_HOME="/opt/java/openjdk"          \
 	             --build-arg GRAALVM_HOME="/opt/java/graalvm"          \
 	             -t ${BASE_FULL_DOCKER_TAG_NAME}:${BASE_IMAGE_VERSION} \
 	             "${IMAGES_DIR}/base/."

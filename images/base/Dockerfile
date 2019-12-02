@@ -18,7 +18,7 @@ WORKDIR ${WORKDIR}
 
 ### Java setup
 
-ARG JAVA_9_HOME
+ARG JAVA_11_HOME
 
 ARG GRAALVM_HOME
 ENV GRAALVM_HOME=${GRAALVM_HOME}
@@ -27,7 +27,7 @@ ENV PATH=${GRAALVM_HOME}/bin:${PATH}
 
 ### Test Java (Traditional and GraalVM)
 
-RUN ${JAVA_9_HOME}/bin/java -version
+RUN ${JAVA_11_HOME}/bin/java -version
 
 RUN ${GRAALVM_HOME}/bin/java -version
 
